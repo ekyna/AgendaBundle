@@ -1,0 +1,35 @@
+<ul class="nav nav-tabs">
+    <li class="active"><a href="#agenda-event-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
+    <li><a href="#agenda-event-seo" data-toggle="tab">{{ 'ekyna_core.field.seo'|trans }}</a></li>
+</ul>
+<div class="panel-body form-body">
+    {% form_theme form 'EkynaAdminBundle:Form:form_div_layout.html.twig' %}
+    {{ bootstrap_set_style('horizontal') }}
+    {{ form_errors(form) }}
+    <div class="tab-content">
+	    <div class="tab-pane active" id="agenda-event-general">
+	        {{ form_row(form.name) }}
+	        {{ form_row(form.title) }}
+            <div class="row">
+                <div class="col-md-6">
+	                {{ form_row(form.startDate, {'label_col': 4, 'widget_col': 8}) }}
+                </div>
+                <div class="col-md-6">
+	                {{ form_row(form.endDate, {'label_col': 4, 'widget_col': 8}) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+	                {{ form_row(form.private, {'label_col': 4, 'widget_col': 8}) }}
+                </div>
+                <div class="col-md-6">
+	                {{ form_row(form.enabled, {'label_col': 4, 'widget_col': 8}) }}
+                </div>
+            </div>
+	    </div>
+	    <div class="tab-pane" id="agenda-event-seo">
+	        {{ form_row(form.seo) }}
+	    </div>
+    </div>
+    {{ form_rest(form) }}
+</div>

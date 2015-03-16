@@ -1,0 +1,36 @@
+{% extends "EkynaAdminBundle:Entity:layout.html.twig" %}
+
+{% block title %}
+<h1>{{ 'ekyna_agenda.event.header.list'|trans|raw }}</h1>
+{% endblock title %}
+
+{% block actions %}
+{{ admin_resource_btn('ekyna_agenda.event', 'new') }}
+{% endblock actions %}
+
+{% block main %}
+    <div id="agenda-calendar"></div>
+{% endblock main %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets output='css/admin-agenda.css' filter='cssrewrite, ?yui_css'
+        '@EkynaAgendaBundle/Resources/asset/css/jquery.qtip.css'
+        '@EkynaAgendaBundle/Resources/asset/css/fullcalendar.css'
+        '@EkynaAgendaBundle/Resources/asset/css/agenda.css'
+    %}
+        <link href="{{ asset_url }}" rel="stylesheet" type="text/css" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts output='js/admin-agenda.js' filter='?yui_js'
+        '@EkynaAgendaBundle/Resources/asset/js/jquery.qtip.js'
+        '@EkynaAgendaBundle/Resources/asset/js/fullcalendar.js'
+        '@EkynaAgendaBundle/Resources/asset/js/lang-all.js'
+        '@EkynaAgendaBundle/Resources/asset/js/agenda.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock javascripts %}

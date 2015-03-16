@@ -1,0 +1,7 @@
+ekyna_agenda_event_admin:
+    resource: "admin/event.yml"
+    prefix:   /events
+
+ekyna_agenda_category_admin:
+    resource: "admin/category.yml"
+    prefix:   /categories

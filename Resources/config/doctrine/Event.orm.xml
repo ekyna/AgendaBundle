@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping
+        xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:gedmo="http://gediminasm.org/schemas/orm/doctrine-extensions-mapping"
+        xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                            http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <entity repository-class="Ekyna\Bundle\AgendaBundle\Entity\EventRepository"
+            name="Ekyna\Bundle\AgendaBundle\Entity\Event"
+            table="agenda_event">
+
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO"/>
+        </id>
+
+        <field name="name" type="string" column="name" length="64" unique="true" />
+        <field name="title" type="string" column="title" length="255" />
+
+        <field name="startDate" type="datetime" column="start_date" />
+        <field name="endDate" type="datetime" column="end_date" />
+
+        <field name="private" type="boolean" column="private" />
+        <field name="enabled" type="boolean" column="enabled" />
+
+        <field name="slug" column="slug" type="string" length="64" unique="true">
+            <gedmo:slug unique="true" updatable="false" fields="name" />
+        </field>
+
+        <field name="createdAt" column="created_at" type="datetime">
+            <gedmo:timestampable on="create" />
+        </field>
+        <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
+            <gedmo:timestampable on="update" />
+        </field>
+
+        <one-to-one field="content" target-entity="Ekyna\Bundle\CmsBundle\Entity\TinymceBlock">
+            <cascade>
+                <cascade-persist />
+                <cascade-remove />
+            </cascade>
+            <join-column name="content_id" referenced-column-name="id" on-delete="RESTRICT" nullable="false" />
+        </one-to-one>
+
+        <many-to-one target-entity="Ekyna\Bundle\AgendaBundle\Entity\Category" field="category">
+            <join-column name="category_id" referenced-column-name="id" nullable="false" on-delete="RESTRICT" />
+        </many-to-one>
+
+    </entity>
+
+</doctrine-mapping>

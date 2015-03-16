@@ -1,0 +1,23 @@
+Ekyna\Bundle\AgendaBundle\Entity\Category:
+    "agenda_category_public":
+        name: Public
+        color: '#428bca'
+    "agenda_category_private":
+        name: Private
+        color: '#d9534f'
+
+Ekyna\Bundle\AgendaBundle\Entity\Event:
+    "agenda_event_test":
+        name: Agenda event test name
+        category: @agenda_category_*
+        title: Agenda event test title
+        startDate: <dateTime('now')>
+        endDate: <dateTime('-2 hours')>
+        private: <boolean()>
+    "agenda_event_{1..29}":
+        name: Agenda event <current()> name
+        category: @agenda_category_*
+        title: Agenda event <current()> title
+        startDate: <dateTimeBetween('-2 months', 'now')>
+        endDate: <dateTimeBetween($startDate, 'now')>
+        private: <boolean()>

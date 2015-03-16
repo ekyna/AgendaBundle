@@ -1,0 +1,34 @@
+{
+	"name" : "ekyna/agenda-bundle",
+	"description" : "Agenda management",
+	"type" : "symfony-bundle",
+	"authors" : [{
+			"name" : "Etienne Dauvergne",
+			"homepage" : "http://ekyna.com"
+		}
+	],
+	"keywords" : [
+		"symfony2",
+		"agenda",
+		"bundle"
+	],
+	"homepage" : "https://github.com/ekyna/AgendaBundle",
+	"license" : [
+		"MIT"
+	],
+	"require" : {
+		"php" : ">=5.4.0",
+		"ekyna/cms-bundle" : "0.1.*@dev"
+	},
+	"autoload" : {
+		"psr-0" : {
+			"Ekyna\\Bundle\\AgendaBundle" : ""
+		}
+	},
+	"target-dir" : "Ekyna/Bundle/AgendaBundle",
+	"extra" : {
+		"branch-alias" : {
+			"dev-master" : "0.1.x-dev"
+		}
+	}
+}
