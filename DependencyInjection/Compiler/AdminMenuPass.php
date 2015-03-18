@@ -27,7 +27,7 @@ class AdminMenuPass implements CompilerPassInterface
             'name'     => 'agenda',
             'label'    => 'ekyna_agenda.label',
             'icon'     => 'calendar',
-            'position' => 98,
+            'position' => 90,
         )));
         $pool->addMethodCall('createEntry', array('agenda', array(
             'name'     => 'events',

@@ -24,6 +24,17 @@ class EventType extends ResourceFormType
             ->add('title', 'text', array(
                 'label' => 'ekyna_core.field.title',
             ))
+            ->add('category', 'ekyna_resource', array(
+                'label' => 'ekyna_core.field.category',
+                'class' => 'Ekyna\Bundle\AgendaBundle\Entity\Category',
+                'property' => 'name',
+                'allow_new' => $options['admin_mode'],
+                'allow_list' => $options['admin_mode'],
+                'empty_value' => 'ekyna_core.field.category',
+                'attr' => array(
+                    'placeholder' => 'ekyna_core.field.category',
+                ),
+            ))
             ->add('startDate', 'datetime', array(
                 'label' => 'ekyna_core.field.start_date',
             ))
