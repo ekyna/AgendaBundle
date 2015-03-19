@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping
+        xmlns="http://symfony.com/schema/dic/constraint-mapping"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                            http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Ekyna\Bundle\AgendaBundle\Entity\Event">
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="title">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="startDate">
+            <constraint name="NotNull" />
+            <constraint name="DateTime" />
+        </property>
+        <property name="endDate">
+            <constraint name="NotNull" />
+            <constraint name="DateTime" />
+        </property>
+        <property name="category">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="seo">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="content">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <constraint name="Ekyna\Bundle\AgendaBundle\Validator\Constraints\Event" />
+    </class>
+
+    <class name="Ekyna\Bundle\AgendaBundle\Entity\Category">
+        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
+            <option name="fields">name</option>
+            <option name="message">ekyna_agenda.category.unique_name</option>
+        </constraint>
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="background_color">
+            <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
+        </property>
+        <property name="text_color">
+            <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
+        </property>
+    </class>
+
+</constraint-mapping>

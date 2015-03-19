@@ -1,1 +1,5 @@
 ekyna_agenda:
+    event:
+        invalid_date_range: La date de fin doit être postérieure à la date de début.
+    category:
+        unique_name: Une catégorie portant ce nom éxiste déjà.
