@@ -2,32 +2,34 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
+use Ekyna\Bundle\AgendaBundle\Model\CategoryInterface;
+
 /**
  * Class Category
  * @package Ekyna\Bundle\AgendaBundle\Entity
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-class Category
+class Category implements CategoryInterface
 {
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $backgroundColor;
+    protected $backgroundColor;
 
     /**
      * @var string
      */
-    private $textColor;
+    protected $textColor;
 
 
     /**
@@ -41,9 +43,7 @@ class Category
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -51,10 +51,7 @@ class Category
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Category
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -63,9 +60,7 @@ class Category
     }
 
     /**
-     * Get name
-     *
-     * @return string 
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -73,9 +68,7 @@ class Category
     }
 
     /**
-     * Returns the backgroundColor.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getBackgroundColor()
     {
@@ -83,10 +76,7 @@ class Category
     }
 
     /**
-     * Sets the backgroundColor.
-     *
-     * @param string $backgroundColor
-     * @return Category
+     * {@inheritdoc}
      */
     public function setBackgroundColor($backgroundColor)
     {
@@ -95,9 +85,7 @@ class Category
     }
 
     /**
-     * Returns the textColor.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getTextColor()
     {
@@ -105,10 +93,7 @@ class Category
     }
 
     /**
-     * Sets the textColor.
-     *
-     * @param string $textColor
-     * @return Category
+     * {@inheritdoc}
      */
     public function setTextColor($textColor)
     {

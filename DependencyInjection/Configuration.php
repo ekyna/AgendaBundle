@@ -21,6 +21,17 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('ekyna_agenda');
 
+        $rootNode
+            ->children()
+                ->arrayNode('admin')
+                    ->addDefaultsIfNotSet()
+                    ->children()
+                        ->booleanNode('calendar')->defaultFalse()->end()
+                    ->end()
+                ->end()
+            ->end()
+        ;
+
         $this->addPoolsSection($rootNode);
 
         return $treeBuilder;

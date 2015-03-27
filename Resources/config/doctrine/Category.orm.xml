@@ -5,7 +5,8 @@
         xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                             http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Ekyna\Bundle\AgendaBundle\Entity\Category"
+    <mapped-superclass
+            name="Ekyna\Bundle\AgendaBundle\Entity\Category"
             table="agenda_category">
 
         <id name="id" type="integer" column="id">
@@ -16,6 +17,6 @@
         <field name="backgroundColor" type="string" column="background_color" length="32" />
         <field name="textColor" type="string" column="text_color" length="32" />
 
-    </entity>
+    </mapped-superclass>
 
 </doctrine-mapping>

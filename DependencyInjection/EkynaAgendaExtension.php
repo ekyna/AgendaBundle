@@ -19,7 +19,9 @@ class EkynaAgendaExtension extends AbstractExtension implements PrependExtension
      */
     public function load(array $configs, ContainerBuilder $container)
     {
-        $this->configure($configs, 'ekyna_agenda', new Configuration(), $container);
+        $config = $this->configure($configs, 'ekyna_agenda', new Configuration(), $container);
+
+        $container->setParameter('ekyna_agenda.admin_config', $config['admin']);
     }
 
     /**

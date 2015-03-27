@@ -2,8 +2,9 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
+use Ekyna\Bundle\AgendaBundle\Model\CategoryInterface;
+use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 use Ekyna\Bundle\CmsBundle\Entity\Seo;
-use Ekyna\Bundle\CmsBundle\Entity\TinymceBlock;
 use Ekyna\Bundle\CmsBundle\Model as Cms;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
@@ -12,7 +13,7 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
  * @package Ekyna\Bundle\AgendaBundle\Entity
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, Cms\SeoSubjectInterface
+class Event implements EventInterface
 {
     use Core\TimestampableTrait,
         Cms\SeoSubjectTrait;
@@ -20,52 +21,52 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var Category
      */
-    private $category;
+    protected $category;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      */
-    private $content;
+    protected $content;
 
     /**
      * @var \DateTime
      */
-    private $startDate;
+    protected $startDate;
 
     /**
      * @var \DateTime
      */
-    private $endDate;
+    protected $endDate;
 
     /**
      * @var bool
      */
-    private $private = false;
+    protected $private = false;
 
     /**
      * @var bool
      */
-    private $enabled = false;
+    protected $enabled = false;
 
     /**
      * @var string
      */
-    private $slug;
+    protected $slug;
 
 
     /**
@@ -113,9 +114,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Get id
-     *
-     * @return integer 
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -123,21 +122,16 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the category.
-     *
-     * @param Category $category
-     * @return Event
+     * {@inheritdoc}
      */
-    public function setCategory(Category $category)
+    public function setCategory(CategoryInterface $category)
     {
         $this->category = $category;
         return $this;
     }
 
     /**
-     * Returns the category.
-     *
-     * @return Category
+     * {@inheritdoc}
      */
     public function getCategory()
     {
@@ -145,10 +139,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return Event
+     * {@inheritdoc}
      */
     public function setName($name)
     {
@@ -158,9 +149,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Get name
-     *
-     * @return string 
+     * {@inheritdoc}
      */
     public function getName()
     {
@@ -168,10 +157,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Set title
-     *
-     * @param string $title
-     * @return Event
+     * {@inheritdoc}
      */
     public function setTitle($title)
     {
@@ -181,9 +167,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Get title
-     *
-     * @return string 
+     * {@inheritdoc}
      */
     public function getTitle()
     {
@@ -191,9 +175,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the content.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getContent()
     {
@@ -201,10 +183,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the content.
-     *
-     * @param string $content
-     * @return Event
+     * {@inheritdoc}
      */
     public function setContent($content)
     {
@@ -213,10 +192,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the startDate.
-     *
-     * @param \DateTime $startDate
-     * @return Event
+     * {@inheritdoc}
      */
     public function setStartDate(\DateTime $startDate)
     {
@@ -225,9 +201,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the startDate.
-     *
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getStartDate()
     {
@@ -235,10 +209,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the endDate.
-     *
-     * @param \DateTime $endDate
-     * @return Event
+     * {@inheritdoc}
      */
     public function setEndDate(\DateTime $endDate)
     {
@@ -247,9 +218,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the endDate.
-     *
-     * @return \DateTime
+     * {@inheritdoc}
      */
     public function getEndDate()
     {
@@ -257,9 +226,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the private.
-     *
-     * @return boolean
+     * {@inheritdoc}
      */
     public function getPrivate()
     {
@@ -267,10 +234,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the private.
-     *
-     * @param boolean $private
-     * @return Event
+     * {@inheritdoc}
      */
     public function setPrivate($private)
     {
@@ -279,9 +243,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the enabled.
-     *
-     * @return boolean
+     * {@inheritdoc}
      */
     public function getEnabled()
     {
@@ -289,10 +251,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the enabled.
-     *
-     * @param boolean $enabled
-     * @return Event
+     * {@inheritdoc}
      */
     public function setEnabled($enabled)
     {
@@ -301,9 +260,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Returns the slug.
-     *
-     * @return string
+     * {@inheritdoc}
      */
     public function getSlug()
     {
@@ -311,10 +268,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the slug.
-     *
-     * @param string $slug
-     * @return Event
+     * {@inheritdoc}
      */
     public function setSlug($slug)
     {

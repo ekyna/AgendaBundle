@@ -22,6 +22,11 @@ class EventController extends ResourceController
      */
     public function listAction(Request $request)
     {
+        $config = $this->container->getParameter('ekyna_agenda.admin_config');
+        if ($request->isXmlHttpRequest() || !$config['calendar']) {
+            return parent::listAction($request);
+        }
+
         $this->isGranted('VIEW');
 
         $context = $this->loadContext($request);
