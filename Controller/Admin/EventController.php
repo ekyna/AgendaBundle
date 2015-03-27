@@ -2,6 +2,7 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Controller\Admin;
 
+use Ekyna\Bundle\AdminBundle\Controller\Resource;
 use Ekyna\Bundle\AdminBundle\Controller\ResourceController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class EventController extends ResourceController
 {
+    use Resource\TinymceTrait,
+        Resource\ToggleableTrait;
+
     /**
      * {@inheritdoc}
      */

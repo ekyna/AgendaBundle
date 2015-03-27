@@ -54,9 +54,9 @@ class LoadEventData extends AbstractFixture implements FixtureInterface, Ordered
                 ->setPrivate(25 > rand(0, 100) ? true : false)
                 ->setCategory($categories[mt_rand(0, count($categories) - 1)])
                 ->setEnabled(true)
+                ->setContent('<p>' . $faker->paragraph(rand(4, 6)) . '</p>')
             ;
 
-            $event->getContent()->setHtml('<p>' . $faker->paragraph(rand(4, 6)) . '</p>');
             $event->getSeo()
                 ->setTitle($event->getTitle())
                 ->setDescription($faker->sentence())

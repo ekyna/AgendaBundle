@@ -38,7 +38,7 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     private $title;
 
     /**
-     * @var TinymceBlock
+     * @var string
      */
     private $content;
 
@@ -73,7 +73,6 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
      */
     public function __construct()
     {
-        $this->content = new TinymceBlock();
         $this->seo = new Seo();
     }
 
@@ -192,25 +191,25 @@ class Event implements Core\TimestampableInterface, Core\TaggedEntityInterface, 
     }
 
     /**
-     * Sets the content.
-     *
-     * @param TinymceBlock $content
-     * @return Event
-     */
-    public function setContent(TinymceBlock $content)
-    {
-        $this->content = $content;
-        return $this;
-    }
-
-    /**
      * Returns the content.
      *
-     * @return TinymceBlock
+     * @return string
      */
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Sets the content.
+     *
+     * @param string $content
+     * @return Event
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
+        return $this;
     }
 
     /**

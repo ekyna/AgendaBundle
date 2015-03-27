@@ -1,5 +1,6 @@
 <ul class="nav nav-tabs">
     <li class="active"><a href="#agenda-event-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
+    <li><a href="#agenda-event-content" data-toggle="tab">{{ 'ekyna_core.field.content'|trans }}</a></li>
     <li><a href="#agenda-event-seo" data-toggle="tab">{{ 'ekyna_core.field.seo'|trans }}</a></li>
 </ul>
 <div class="panel-body form-body">
@@ -28,6 +29,9 @@
                 </div>
             </div>
 	    </div>
+	    <div class="tab-pane" id="agenda-event-content">
+            {{ form_row(form.content) }}
+        </div>
 	    <div class="tab-pane" id="agenda-event-seo">
 	        {{ form_row(form.seo) }}
 	    </div>

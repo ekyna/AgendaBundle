@@ -24,6 +24,13 @@ class EventType extends ResourceFormType
             ->add('title', 'text', array(
                 'label' => 'ekyna_core.field.title',
             ))
+            ->add('content', 'textarea', array(
+                'label' => 'ekyna_core.field.content',
+                'attr' => array(
+                    'class' => 'tinymce',
+                    'data-theme' => 'advanced',
+                )
+            ))
             ->add('category', 'ekyna_resource', array(
                 'label' => 'ekyna_core.field.category',
                 'class' => 'Ekyna\Bundle\AgendaBundle\Entity\Category',
