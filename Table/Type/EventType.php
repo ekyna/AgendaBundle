@@ -34,6 +34,14 @@ class EventType extends ResourceTableType
                 'label' => 'ekyna_core.field.end_date',
                 'sortable' => true,
             ))
+            ->addColumn('enabled', 'boolean', array(
+                'label' => 'ekyna_core.field.enabled',
+                'sortable' => true,
+                'route_name' => 'ekyna_agenda_event_admin_toggle',
+                'route_parameters_map' => array(
+                    'eventId' => 'id',
+                ),
+            ))
             ->addColumn('actions', 'admin_actions', array(
                 'buttons' => array(
                     array(
@@ -66,6 +74,9 @@ class EventType extends ResourceTableType
             ))
             ->addFilter('endDate', 'datetime', array(
                 'label' => 'ekyna_core.field.end_date',
+            ))
+            ->addFilter('enabled', 'boolean', array(
+                'label' => 'ekyna_core.field.enabled',
             ))
         ;
     }
