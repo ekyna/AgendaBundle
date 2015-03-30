@@ -43,10 +43,10 @@
         <property name="name">
             <constraint name="NotBlank" />
         </property>
-        <property name="background_color">
+        <property name="backgroundColor">
             <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
         </property>
-        <property name="text_color">
+        <property name="textColor">
             <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
         </property>
     </class>
