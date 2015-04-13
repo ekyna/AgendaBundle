@@ -2,7 +2,6 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Model;
 
-use Ekyna\Bundle\CmsBundle\Model as Cms;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
 /**
@@ -10,7 +9,7 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
  * @package Ekyna\Bundle\AgendaBundle\Model
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityInterface, Cms\SeoSubjectInterface
+interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityInterface
 {
     /**
      * Get id

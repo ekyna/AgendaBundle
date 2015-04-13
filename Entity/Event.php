@@ -4,8 +4,6 @@ namespace Ekyna\Bundle\AgendaBundle\Entity;
 
 use Ekyna\Bundle\AgendaBundle\Model\CategoryInterface;
 use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
-use Ekyna\Bundle\CmsBundle\Entity\Seo;
-use Ekyna\Bundle\CmsBundle\Model as Cms;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
 /**
@@ -15,8 +13,7 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
  */
 class Event implements EventInterface
 {
-    use Core\TimestampableTrait,
-        Cms\SeoSubjectTrait;
+    use Core\TimestampableTrait;
 
     /**
      * @var integer
@@ -68,14 +65,6 @@ class Event implements EventInterface
      */
     protected $slug;
 
-
-    /**
-     * Constructor.
-     */
-    public function __construct()
-    {
-        $this->seo = new Seo();
-    }
 
     /**
      * Returns the string representation.

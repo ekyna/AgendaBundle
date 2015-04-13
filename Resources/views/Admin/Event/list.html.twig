@@ -20,7 +20,6 @@
     {{ parent() }}
     {% if events is not defined %}
     {% stylesheets output='css/admin-agenda.css' filter='cssrewrite, ?yui_css'
-        '@EkynaAgendaBundle/Resources/asset/css/jquery.qtip.css'
         '@EkynaAgendaBundle/Resources/asset/css/fullcalendar.css'
         '@EkynaAgendaBundle/Resources/asset/css/agenda.css'
     -%}
@@ -33,7 +32,6 @@
     {{ parent() }}
     {% if events is not defined %}
         {% javascripts output='js/admin-agenda.js' filter='?yui_js'
-            '@EkynaAgendaBundle/Resources/asset/js/jquery.qtip.js'
             '@EkynaAgendaBundle/Resources/asset/js/fullcalendar.js'
             '@EkynaAgendaBundle/Resources/asset/js/lang-all.js'
             '@EkynaAgendaBundle/Resources/asset/js/agenda.js'

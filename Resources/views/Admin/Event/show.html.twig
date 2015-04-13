@@ -18,7 +18,6 @@
     <ul class="nav nav-tabs">
         <li class="active"><a href="#agenda-event-general" data-toggle="tab">{{ 'ekyna_core.field.general'|trans }}</a></li>
         <li><a href="#agenda-event-content" data-toggle="tab">{{ 'ekyna_core.field.content'|trans }}</a></li>
-        <li><a href="#agenda-event-seo" data-toggle="tab">{{ 'ekyna_core.field.seo'|trans }}</a></li>
     </ul>
     <div class="show-body">
         <div class="tab-content">
@@ -45,9 +44,6 @@
             </div>
             <div class="tab-pane" id="agenda-event-content">
                 {{ show_row(path('ekyna_agenda_event_admin_tinymce', identifiers|merge({'eventId': event.id})), 'tinymce', 'ekyna_core.field.content') }}
-            </div>
-            <div class="tab-pane" id="agenda-event-seo">
-                {{ show_row(event.seo, 'seo') }}
             </div>
         </div>
     </div>

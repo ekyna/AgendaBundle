@@ -43,7 +43,7 @@ ekyna_agenda_event_admin_tinymce:
 
 ekyna_agenda_event_admin_toggle:
     path: /{eventId}/toggle/{field}
-    defaults: { _controller: "ekyna_agenda.event.controller:toggleAction", field: "enabled" }
+    defaults: { _controller: "ekyna_agenda.event.controller:toggleAction", field: enabled }
     requirements:
         _method: GET
         eventId: \d+

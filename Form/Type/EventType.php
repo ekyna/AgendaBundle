@@ -26,6 +26,7 @@ class EventType extends ResourceFormType
             ))
             ->add('content', 'textarea', array(
                 'label' => 'ekyna_core.field.content',
+                'required' => false,
                 'attr' => array(
                     'class' => 'tinymce',
                     'data-theme' => 'advanced',
@@ -62,7 +63,6 @@ class EventType extends ResourceFormType
                     'align_with_widget' => true,
                 )
             ))
-            ->add('seo', 'ekyna_cms_seo')
         ;
     }
 

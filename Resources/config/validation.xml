@@ -28,10 +28,6 @@
             <constraint name="NotNull" />
             <constraint name="Valid" />
         </property>
-        <property name="content">
-            <constraint name="NotNull" />
-            <constraint name="Valid" />
-        </property>
         <constraint name="Ekyna\Bundle\AgendaBundle\Validator\Constraints\Event" />
     </class>
 

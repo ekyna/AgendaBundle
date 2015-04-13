@@ -26,6 +26,13 @@ class EventType extends ResourceTableType
                     'eventId' => 'id'
                 ),
             ))
+            /*->addColumn('category', 'anchor', array(
+                'label' => 'ekyna_core.field.category',
+                'property_path' => 'category.name',
+                'sortable' => false,
+                'route_name' => 'ekyna_agenda_category_admin_show',
+                'route_parameters_map' => array('categoryId' => 'category.id'),
+            ))*/
             ->addColumn('startDate', 'datetime', array(
                 'label' => 'ekyna_core.field.start_date',
                 'sortable' => true,
