@@ -17,7 +17,7 @@
 
         <field name="name" type="string" column="name" length="64" unique="true" />
         <field name="title" type="string" column="title" length="255" />
-        <field name="content" type="text" column="content" />
+        <field name="content" type="text" column="content" nullable="true" />
 
         <field name="startDate" type="datetime" column="start_date" />
         <field name="endDate" type="datetime" column="end_date" />
