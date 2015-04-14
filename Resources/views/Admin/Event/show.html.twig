@@ -24,7 +24,6 @@
             <div class="tab-pane active" id="agenda-event-general">
                 {{ show_row(event.name, 'text', 'ekyna_core.field.name') }}
                 {{ show_row(event.title, 'text', 'ekyna_core.field.title') }}
-                {{ show_row(event.category, 'entity', 'ekyna_core.field.category', {'field': 'name', 'route': 'ekyna_agenda_category_admin_show', 'route_params_map': {'categoryId': 'id'}}) }}
                 <div class="row">
                     <div class="col-md-6">
                         {{ show_row(event.startDate, 'datetime', 'ekyna_core.field.start_date', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
@@ -33,14 +32,7 @@
                         {{ show_row(event.endDate, 'datetime', 'ekyna_core.field.end_date', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        {{ show_row(event.private, 'checkbox', 'ekyna_agenda.event.field.private', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
-                    </div>
-                    <div class="col-md-6">
-                        {{ show_row(event.enabled, 'checkbox', 'ekyna_core.field.enabled', {'label_nb_col': 4, 'widget_nb_col': 8}) }}
-                    </div>
-                </div>
+                {{ show_row(event.enabled, 'checkbox', 'ekyna_core.field.enabled') }}
             </div>
             <div class="tab-pane" id="agenda-event-content">
                 {{ show_row(path('ekyna_agenda_event_admin_tinymce', identifiers|merge({'eventId': event.id})), 'tinymce', 'ekyna_core.field.content') }}

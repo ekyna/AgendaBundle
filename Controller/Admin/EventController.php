@@ -31,14 +31,6 @@ class EventController extends ResourceController
 
         $context = $this->loadContext($request);
 
-        /*$table = $this->getTableFactory()
-            ->createBuilder($this->config->getTableType(), array(
-                'name' => $this->config->getId(),
-                'selector' => (bool)$request->get('selector', false), // TODO use constants (single/multiple)
-                'multiple' => (bool)$request->get('multiple', false),
-            ))
-            ->getTable($request);*/
-
         $response = new Response();
 
         $format = 'html';

@@ -2,7 +2,6 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
-use Ekyna\Bundle\AgendaBundle\Model\CategoryInterface;
 use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
@@ -19,11 +18,6 @@ class Event implements EventInterface
      * @var integer
      */
     protected $id;
-
-    /**
-     * @var Category
-     */
-    protected $category;
 
     /**
      * @var string
@@ -49,11 +43,6 @@ class Event implements EventInterface
      * @var \DateTime
      */
     protected $endDate;
-
-    /**
-     * @var bool
-     */
-    protected $private = false;
 
     /**
      * @var bool
@@ -88,10 +77,9 @@ class Event implements EventInterface
             'title'           => $this->title,
             'allDay'          => false,
             'start'           => $this->startDate->format('Y-m-d\TH:i:sP'),
-            'backgroundColor' => $this->category->getBackgroundColor(),
-            'borderColor'     => $this->category->getBackgroundColor(),
-            'textColor'       => $this->category->getTextColor(),
-            'private'         => $this->private,
+            'backgroundColor' => '#dddddd',
+            'borderColor'     => '#dddddd',
+            'textColor'       => '#333333',
             'enabled'         => $this->enabled,
         );
 
@@ -108,23 +96,6 @@ class Event implements EventInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setCategory(CategoryInterface $category)
-    {
-        $this->category = $category;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getCategory()
-    {
-        return $this->category;
     }
 
     /**
@@ -200,7 +171,7 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setEndDate(\DateTime $endDate)
+    public function setEndDate(\DateTime $endDate = null)
     {
         $this->endDate = $endDate;
         return $this;
@@ -212,23 +183,6 @@ class Event implements EventInterface
     public function getEndDate()
     {
         return $this->endDate;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getPrivate()
-    {
-        return $this->private;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setPrivate($private)
-    {
-        $this->private = $private;
-        return $this;
     }
 
     /**

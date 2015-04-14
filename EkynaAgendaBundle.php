@@ -29,7 +29,6 @@ class EkynaAgendaBundle extends AbstractBundle
     protected function getModelInterfaces()
     {
         return array(
-            'Ekyna\Bundle\AgendaBundle\Model\CategoryInterface' => 'ekyna_agenda.category.class',
             'Ekyna\Bundle\AgendaBundle\Model\EventInterface'    => 'ekyna_agenda.event.class',
         );
     }

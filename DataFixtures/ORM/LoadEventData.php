@@ -38,8 +38,6 @@ class LoadEventData extends AbstractFixture implements FixtureInterface, Ordered
     {
         $faker = Factory::create($this->container->getParameter('hautelook_alice.locale'));
 
-        $categories = $this->container->get('ekyna_agenda.category.repository')->findAll();
-
         for ($e = 1; $e < 100; $e++) {
             $startDate = $faker->dateTimeBetween('-3 months', 'now');
             $endDate = clone $startDate;
@@ -51,15 +49,8 @@ class LoadEventData extends AbstractFixture implements FixtureInterface, Ordered
                 ->setTitle(sprintf('Agenda event %d title', $e))
                 ->setStartDate($startDate)
                 ->setEndDate($endDate)
-                ->setPrivate(25 > rand(0, 100) ? true : false)
-                ->setCategory($categories[mt_rand(0, count($categories) - 1)])
                 ->setEnabled(true)
                 ->setContent('<p>' . $faker->paragraph(rand(4, 6)) . '</p>')
-            ;
-
-            $event->getSeo()
-                ->setTitle($event->getTitle())
-                ->setDescription($faker->sentence())
             ;
 
             $om->persist($event);

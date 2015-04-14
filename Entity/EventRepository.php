@@ -19,11 +19,9 @@ class EventRepository extends ResourceRepository
      *
      * @param integer $currentPage
      * @param integer $maxPerPage
-     * @param array   $categories
-     * @param bool    $includePrivate
      * @return Pagerfanta
      */
-    public function createPager($currentPage, $maxPerPage = 12, array $categories = array(), $includePrivate = false)
+    public function createPager($currentPage, $maxPerPage = 12)
     {
         $qb = $this->createQueryBuilder('e');
         $params = ['enabled' => true];
@@ -31,22 +29,6 @@ class EventRepository extends ResourceRepository
             ->addOrderBy('e.startDate', 'DESC')
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
         ;
-
-        $cateParam = [];
-        foreach ($categories as $category) {
-            if ($category instanceof Category) {
-                $cateParam[] = $category;
-            }
-        }
-        if (0 < count($cateParam)) {
-            $qb->andWhere($qb->expr()->in('e.category', ':categories'));
-            $params['categories'] = $cateParam;
-        }
-
-        if (!$includePrivate) {
-            $qb->andWhere($qb->expr()->eq('e.private', ':private'));
-            $params['private'] = false;
-        }
 
         $query = $qb->getQuery();
         $query->setParameters($params);
@@ -150,10 +132,9 @@ class EventRepository extends ResourceRepository
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @param bool|null $private
      * @return Event[]
      */
-    public function findByDateRange(\DateTime $startDate, \DateTime $endDate, $private = null)
+    public function findByDateRange(\DateTime $startDate, \DateTime $endDate)
     {
         $qb = $this
             ->createQueryBuilder('e')
@@ -166,12 +147,6 @@ class EventRepository extends ResourceRepository
             ->setParameter('startDate', $startDate, Type::DATETIME)
             ->setParameter('endDate', $endDate, Type::DATETIME)
         ;
-        if (null !== $private) {
-            $qb
-                ->andWhere($qb->expr()->gte('e.private', ':private'))
-                ->setParameter('private', $private, Type::BOOLEAN)
-            ;
-        }
 
         return $qb
             ->getQuery()

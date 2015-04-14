@@ -1,26 +1,5 @@
 ekyna_agenda:
     label: Agenda
-    category:
-        label:
-            singular: Catégorie
-            plural: Catégories
-        header:
-            list: Catégories <small>Liste des catégories</small>
-            show: Détail de la catégorie <small>%name%</small>
-            new: Créer une nouvelle catégorie
-            edit: Modifier la catégorie <small>%name%</small>
-            remove: Supprimer la catégorie <small>%name%</small>
-        button:
-            list: Liste des catégories
-            show: Détail de la catégorie
-            new: Nouvelle catégorie
-            edit: Modifier la catégorie
-            remove: Supprimer la catégorie
-        field:
-            background_color: Couleur de fond
-            text_color: Couleur du texte
-        alert:
-            empty_list: Aucune catégorie configuré
     event:
         label:
             singular: Événement

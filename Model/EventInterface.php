@@ -19,21 +19,6 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function getId();
 
     /**
-     * Sets the category.
-     *
-     * @param CategoryInterface $category
-     * @return EventInterface|$this
-     */
-    public function setCategory(CategoryInterface $category);
-
-    /**
-     * Returns the category.
-     *
-     * @return CategoryInterface
-     */
-    public function getCategory();
-
-    /**
      * Set name
      *
      * @param string $name
@@ -99,7 +84,7 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
      * @param \DateTime $endDate
      * @return EventInterface|$this
      */
-    public function setEndDate(\DateTime $endDate);
+    public function setEndDate(\DateTime $endDate = null);
 
     /**
      * Returns the endDate.
@@ -107,21 +92,6 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
      * @return \DateTime
      */
     public function getEndDate();
-
-    /**
-     * Returns the private.
-     *
-     * @return boolean
-     */
-    public function getPrivate();
-
-    /**
-     * Sets the private.
-     *
-     * @param boolean $private
-     * @return EventInterface|$this
-     */
-    public function setPrivate($private);
 
     /**
      * Returns the enabled.

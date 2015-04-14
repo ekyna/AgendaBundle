@@ -9,7 +9,6 @@
 	    <div class="tab-pane active" id="agenda-event-general">
 	        {{ form_row(form.name) }}
 	        {{ form_row(form.title) }}
-	        {{ form_row(form.category) }}
             <div class="row">
                 <div class="col-md-6">
 	                {{ form_row(form.startDate, {'label_col': 4, 'widget_col': 8}) }}
@@ -18,14 +17,7 @@
 	                {{ form_row(form.endDate, {'label_col': 4, 'widget_col': 8}) }}
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-6">
-	                {{ form_row(form.private, {'label_col': 4, 'widget_col': 8}) }}
-                </div>
-                <div class="col-md-6">
-	                {{ form_row(form.enabled, {'label_col': 4, 'widget_col': 8}) }}
-                </div>
-            </div>
+            {{ form_row(form.enabled) }}
 	    </div>
 	    <div class="tab-pane" id="agenda-event-content">
             {{ form_row(form.content) }}

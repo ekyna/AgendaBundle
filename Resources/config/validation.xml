@@ -20,27 +20,8 @@
             <constraint name="NotNull" />
             <constraint name="DateTime" />
         </property>
-        <property name="category">
-            <constraint name="NotNull" />
-            <constraint name="Valid" />
-        </property>
         <constraint name="Ekyna\Bundle\AgendaBundle\Validator\Constraints\Event" />
     </class>
 
-    <class name="Ekyna\Bundle\AgendaBundle\Entity\Category">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">name</option>
-            <option name="message">ekyna_agenda.category.unique_name</option>
-        </constraint>
-        <property name="name">
-            <constraint name="NotBlank" />
-        </property>
-        <property name="backgroundColor">
-            <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
-        </property>
-        <property name="textColor">
-            <constraint name="Ekyna\Bundle\CoreBundle\Validator\Constraints\Color" />
-        </property>
-    </class>
 
 </constraint-mapping>

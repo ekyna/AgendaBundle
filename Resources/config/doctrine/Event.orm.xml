@@ -22,7 +22,6 @@
         <field name="startDate" type="datetime" column="start_date" />
         <field name="endDate" type="datetime" column="end_date" />
 
-        <field name="private" type="boolean" column="private" />
         <field name="enabled" type="boolean" column="enabled" />
 
         <field name="slug" column="slug" type="string" length="64" unique="true">
@@ -35,10 +34,6 @@
         <field name="updatedAt" column="updated_at" type="datetime" nullable="true">
             <gedmo:timestampable on="update" />
         </field>
-
-        <many-to-one target-entity="Ekyna\Bundle\AgendaBundle\Model\CategoryInterface" field="category">
-            <join-column name="category_id" referenced-column-name="id" nullable="false" on-delete="RESTRICT" />
-        </many-to-one>
 
     </mapped-superclass>
 
