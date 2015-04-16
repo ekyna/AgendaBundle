@@ -2,6 +2,7 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Controller;
 
+use Ekyna\Bundle\AgendaBundle\Entity\Event;
 use Ekyna\Bundle\CoreBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -25,10 +26,20 @@ class ExampleController extends Controller
         $repo = $this->get('ekyna_agenda.event.repository');
         $pager = $repo->createPager($currentPage, 12);
 
-        return $this->render('EkynaAgendaBundle:Example:index.html.twig', array(
+        /** @var \Ekyna\Bundle\AgendaBundle\Model\EventInterface[] $events */
+        $events = $pager->getCurrentPageResults();
+
+        $response = $this->render('EkynaAgendaBundle:Example:index.html.twig', array(
             'pager'  => $pager,
-            'events' => $pager->getCurrentPageResults(),
+            'events' => $events,
         ));
+
+        $tags = [Event::getEntityTagPrefix()];
+        foreach ($events as $event) {
+            $tags[] = $event->getEntityTag();
+        }
+
+        return $this->configureSharedCache($response, $tags);
     }
 
     /**
@@ -50,9 +61,11 @@ class ExampleController extends Controller
 
         $latest = $repo->findLatest();
 
-        return $this->render('EkynaAgendaBundle:Example:detail.html.twig', array(
+        $response = $this->render('EkynaAgendaBundle:Example:detail.html.twig', array(
             'event' => $event,
             'latest' => $latest,
         ));
+
+        return $this->configureSharedCache($response, array($event->getEntityTag()));
     }
 }

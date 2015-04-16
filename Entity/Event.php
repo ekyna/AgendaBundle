@@ -13,6 +13,7 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
 class Event implements EventInterface
 {
     use Core\TimestampableTrait;
+    use Core\TaggedEntityTrait;
 
     /**
      * @var integer
@@ -222,11 +223,8 @@ class Event implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function getEntityTag()
+    public static function getEntityTagPrefix()
     {
-        if (null === $this->getId()) {
-            throw new \RuntimeException('Unable to generate entity tag, as the id property is undefined.');
-        }
-        return sprintf('ekyna_agenda.event[id:%s]', $this->getId());
+        return 'ekyna_agenda.event';
     }
 }
