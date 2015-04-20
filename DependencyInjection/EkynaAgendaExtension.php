@@ -12,7 +12,7 @@ use Symfony\Component\DependencyInjection\Loader;
  * @package Ekyna\Bundle\AgendaBundle\DependencyInjection
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-class EkynaAgendaExtension extends AbstractExtension implements PrependExtensionInterface
+class EkynaAgendaExtension extends AbstractExtension
 {
     /**
      * {@inheritDoc}
@@ -29,6 +29,8 @@ class EkynaAgendaExtension extends AbstractExtension implements PrependExtension
      */
     public function prepend(ContainerBuilder $container)
     {
+        parent::prepend($container);
+
         $bundles = $container->getParameter('kernel.bundles');
 
         if (array_key_exists('AsseticBundle', $bundles)) {

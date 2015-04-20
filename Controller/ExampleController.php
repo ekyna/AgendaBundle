@@ -66,6 +66,11 @@ class ExampleController extends Controller
             'latest' => $latest,
         ));
 
-        return $this->configureSharedCache($response, array($event->getEntityTag()));
+        $tags = [Event::getEntityTagPrefix(), $event->getEntityTag()];
+        foreach ($latest as $l) {
+            $tags[] = $l->getEntityTag();
+        }
+
+        return $this->configureSharedCache($response, $tags);
     }
 }
