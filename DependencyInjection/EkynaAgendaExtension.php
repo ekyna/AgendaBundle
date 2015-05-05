@@ -4,7 +4,6 @@ namespace Ekyna\Bundle\AgendaBundle\DependencyInjection;
 
 use Ekyna\Bundle\AdminBundle\DependencyInjection\AbstractExtension;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader;
 
 /**
@@ -34,19 +33,9 @@ class EkynaAgendaExtension extends AbstractExtension
         $bundles = $container->getParameter('kernel.bundles');
 
         if (array_key_exists('AsseticBundle', $bundles)) {
-            $this->configureAsseticBundle($container);
+            $container->prependExtensionConfig('assetic', array(
+                'bundles' => array('EkynaAgendaBundle')
+            ));
         }
-    }
-
-    /**
-     * Configures the assetic bundle.
-     *
-     * @param ContainerBuilder $container
-     */
-    protected function configureAsseticBundle(ContainerBuilder $container)
-    {
-        $container->prependExtensionConfig('assetic', array(
-            'bundles' => array('EkynaAgendaBundle')
-        ));
     }
 }
