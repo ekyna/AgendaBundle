@@ -4,6 +4,7 @@ namespace Ekyna\Bundle\AgendaBundle\Entity;
 
 use Doctrine\DBAL\Types\Type;
 use Ekyna\Bundle\AdminBundle\Doctrine\ORM\TranslatableResourceRepository;
+use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 
 /**
  * Class EventRepository
@@ -16,7 +17,7 @@ class EventRepository extends TranslatableResourceRepository
      * Finds one event by slug.
      *
      * @param string $slug
-     * @return Event|null
+     * @return EventInterface|null
      */
     public function findOneBySlug($slug)
     {
@@ -34,7 +35,7 @@ class EventRepository extends TranslatableResourceRepository
      * Finds the upcoming events.
      *
      * @param int $limit
-     * @return Event[]
+     * @return EventInterface[]
      */
     public function findUpComing($limit = 3)
     {
@@ -61,7 +62,7 @@ class EventRepository extends TranslatableResourceRepository
      * Finds the latest events.
      *
      * @param int $limit
-     * @return Event[]
+     * @return EventInterface[]
      */
     public function findLatest($limit = 3)
     {
@@ -89,7 +90,7 @@ class EventRepository extends TranslatableResourceRepository
      *
      * @param \DateTime $startDate
      * @param \DateTime $endDate
-     * @return Event[]
+     * @return EventInterface[]
      */
     public function findByDateRange(\DateTime $startDate, \DateTime $endDate)
     {

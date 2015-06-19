@@ -50,19 +50,19 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function getTitle();
 
     /**
-     * Sets the description.
+     * Sets the content.
      *
-     * @param string $description
+     * @param string $content
      * @return EventInterface|$this
      */
-    public function setDescription($description);
+    public function setContent($content);
 
     /**
-     * Returns the description.
+     * Returns the content.
      *
      * @return string
      */
-    public function getDescription();
+    public function getContent();
 
     /**
      * Sets the startDate.

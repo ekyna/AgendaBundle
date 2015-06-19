@@ -8,7 +8,6 @@
 
     <entity
             name="Ekyna\Bundle\AgendaBundle\Entity\EventTranslation"
-            repository-class="Ekyna\Bundle\AgendaBundle\Entity\EventTranslationRepository"
             table="agenda_event_translation">
 
         <id name="id" type="integer" column="id">
@@ -16,7 +15,7 @@
         </id>
 
         <field name="title" type="string" column="title" length="255" />
-        <field name="description" type="text" column="description" nullable="true" />
+        <field name="content" type="text" column="content" nullable="true" />
 
         <field name="slug" column="slug" type="string" length="64" unique="true">
             <gedmo:slug unique="true" updatable="false" fields="title" />

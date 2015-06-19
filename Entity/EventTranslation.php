@@ -24,7 +24,7 @@ class EventTranslation extends AbstractTranslation
     /**
      * @var string
      */
-    protected $description;
+    protected $content;
 
     /**
      * @var string
@@ -64,25 +64,25 @@ class EventTranslation extends AbstractTranslation
     }
 
     /**
-     * Sets the description.
+     * Sets the content.
      *
-     * @param string $description
+     * @param string $content
      * @return EventTranslation
      */
-    public function setDescription($description)
+    public function setContent($content)
     {
-        $this->description = $description;
+        $this->content = $content;
         return $this;
     }
 
     /**
-     * Returns the description.
+     * Returns the content.
      *
      * @return string
      */
-    public function getDescription()
+    public function getContent()
     {
-        return $this->description;
+        return $this->content;
     }
 
     /**

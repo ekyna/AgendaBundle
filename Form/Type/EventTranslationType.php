@@ -22,8 +22,8 @@ class EventTranslationType extends AbstractType
             ->add('title', 'text', array(
                 'label' => 'ekyna_core.field.title',
             ))
-            ->add('description', 'tinymce', array(
-                'label' => 'ekyna_core.field.description',
+            ->add('content', 'tinymce', array(
+                'label' => 'ekyna_core.field.content',
                 'theme' => 'advanced',
                 'required' => false,
             ))

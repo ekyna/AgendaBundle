@@ -124,18 +124,18 @@ class Event extends AbstractTranslatable implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setContent($content)
     {
-        $this->translate()->setDescription($description);
+        $this->translate()->setContent($content);
         return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getContent()
     {
-        return $this->translate()->getDescription();
+        return $this->translate()->getContent();
     }
 
     /**
