@@ -10,7 +10,7 @@
                 <em>{{ event.startDate|localizeddate('short', 'short') }} - {{ event.endDate|localizeddate('short', 'short') }}</em>
             </p>
             <div>
-                {{ event.content|raw }}
+                {{ event.description|raw }}
             </div>
             <hr>
             {% set link_params = {} %}
@@ -29,7 +29,7 @@
                 <em>{{ e.startDate|localizeddate('short', 'short') }} - {{ e.endDate|localizeddate('short', 'short') }}</em>
             </p>
             <p>
-                {{ e.content|striptags|truncate(128, true, '&hellip;')|raw }}
+                {{ e.description|striptags|truncate(128, true, '&hellip;')|raw }}
             </p>
             {% if not loop.last %}<hr>{% endif %}
             {% endfor %}

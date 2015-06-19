@@ -3,46 +3,15 @@
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
 use Doctrine\DBAL\Types\Type;
-use Ekyna\Bundle\AdminBundle\Doctrine\ORM\ResourceRepository;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
+use Ekyna\Bundle\AdminBundle\Doctrine\ORM\TranslatableResourceRepository;
 
 /**
  * Class EventRepository
  * @package Ekyna\Bundle\AgendaBundle\Entity
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-class EventRepository extends ResourceRepository
+class EventRepository extends TranslatableResourceRepository
 {
-    /**
-     * Returns the events pager.
-     *
-     * @param integer $currentPage
-     * @param integer $maxPerPage
-     * @return Pagerfanta
-     */
-    public function createPager($currentPage, $maxPerPage = 12)
-    {
-        $qb = $this->createQueryBuilder('e');
-        $params = ['enabled' => true];
-        $qb
-            ->addOrderBy('e.startDate', 'DESC')
-            ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
-        ;
-
-        $query = $qb->getQuery();
-        $query->setParameters($params);
-
-        $pager = new Pagerfanta(new DoctrineORMAdapter($query));
-        $pager
-            ->setNormalizeOutOfRangePages(true)
-            ->setMaxPerPage($maxPerPage)
-            ->setCurrentPage($currentPage)
-        ;
-
-        return $pager;
-    }
-
     /**
      * Finds one event by slug.
      *
@@ -55,22 +24,10 @@ class EventRepository extends ResourceRepository
             return null;
         }
 
-        $qb = $this->createQueryBuilder('e');
-
-        $query = $qb
-            ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
-            ->andWhere($qb->expr()->eq('e.slug', ':slug'))
-            ->getQuery()
-        ;
-
-        return $query
-            ->setMaxResults(1)
-            ->setParameters(array(
-                'enabled' => true,
-                'slug' => $slug,
-            ))
-            ->getOneOrNullResult()
-        ;
+        return $this->findOneBy(array(
+            'enabled' => true,
+            'slug' => $slug
+        ));
     }
 
     /**
@@ -84,7 +41,7 @@ class EventRepository extends ResourceRepository
         $today = new \DateTime();
         $today->setTime(0,0,0);
 
-        $qb = $this->createQueryBuilder('e');
+        $qb = $this->getCollectionQueryBuilder();
         $query = $qb
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
             ->andWhere($qb->expr()->gte('e.startDate', ':today'))
@@ -111,7 +68,7 @@ class EventRepository extends ResourceRepository
         $today = new \DateTime();
         $today->setTime(23,59,59);
 
-        $qb = $this->createQueryBuilder('e');
+        $qb = $this->getCollectionQueryBuilder();
         $query = $qb
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
             ->andWhere($qb->expr()->lte('e.endDate', ':today'))
@@ -137,7 +94,7 @@ class EventRepository extends ResourceRepository
     public function findByDateRange(\DateTime $startDate, \DateTime $endDate)
     {
         $qb = $this
-            ->createQueryBuilder('e')
+            ->getCollectionQueryBuilder()
             ->join('e.category', 'c')
         ;
 
@@ -152,5 +109,13 @@ class EventRepository extends ResourceRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getAlias()
+    {
+        return 'e';
     }
 }

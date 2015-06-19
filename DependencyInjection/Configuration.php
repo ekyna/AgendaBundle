@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('output_dir')->defaultValue('')->end()
                 ->arrayNode('admin')
                     ->addDefaultsIfNotSet()
                     ->children()
@@ -56,7 +57,6 @@ class Configuration implements ConfigurationInterface
                                     '_form.html' => 'EkynaAgendaBundle:Admin/Event:_form.html',
                                     'show.html'  => 'EkynaAgendaBundle:Admin/Event:show.html',
                                     'list.html'  => 'EkynaAgendaBundle:Admin/Event:list.html',
-                                    'list.xml'   => 'EkynaAgendaBundle:Admin/Event:list.xml',
                                 ))->end()
                                 ->scalarNode('parent')->end()
                                 ->scalarNode('entity')->defaultValue('Ekyna\Bundle\AgendaBundle\Entity\Event')->end()
@@ -66,6 +66,17 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('form')->defaultValue('Ekyna\Bundle\AgendaBundle\Form\Type\EventType')->end()
                                 ->scalarNode('table')->defaultValue('Ekyna\Bundle\AgendaBundle\Table\Type\EventType')->end()
                                 ->scalarNode('event')->end()
+                                ->arrayNode('translation')
+                                    ->addDefaultsIfNotSet()
+                                    ->children()
+                                        ->scalarNode('entity')->defaultValue('Ekyna\Bundle\AgendaBundle\Entity\EventTranslation')->end()
+                                        ->scalarNode('repository')->end()
+                                        ->arrayNode('fields')
+                                            ->prototype('scalar')->end()
+                                            ->defaultValue(array('title', 'description', 'slug'))
+                                        ->end()
+                                    ->end()
+                                ->end()
                             ->end()
                         ->end()
                     ->end()

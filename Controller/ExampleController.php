@@ -24,7 +24,13 @@ class ExampleController extends Controller
     {
         $currentPage = $request->query->get('page', 1);
         $repo = $this->get('ekyna_agenda.event.repository');
-        $pager = $repo->createPager($currentPage, 12);
+
+        $pager = $repo->createPager(array('enabled' => true), array('startDate' => 'desc'));
+        $pager
+            ->setNormalizeOutOfRangePages(true)
+            ->setMaxPerPage(12)
+            ->setCurrentPage($currentPage)
+        ;
 
         /** @var \Ekyna\Bundle\AgendaBundle\Model\EventInterface[] $events */
         $events = $pager->getCurrentPageResults();
@@ -58,6 +64,7 @@ class ExampleController extends Controller
         if (null === $event) {
             throw new NotFoundHttpException('Event not found.');
         }
+        // TODO check translation locale (slug is translated)
 
         $latest = $repo->findLatest();
 

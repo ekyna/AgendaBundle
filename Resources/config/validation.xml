@@ -13,8 +13,8 @@
         <property name="name">
             <constraint name="NotBlank" />
         </property>
-        <property name="title">
-            <constraint name="NotBlank" />
+        <property name="translations">
+            <constraint name="Valid" />
         </property>
         <property name="startDate">
             <constraint name="NotNull" />
@@ -25,6 +25,12 @@
             <constraint name="DateTime" />
         </property>
         <constraint name="Ekyna\Bundle\AgendaBundle\Validator\Constraints\Event" />
+    </class>
+
+    <class name="Ekyna\Bundle\AgendaBundle\Entity\EventTranslation">
+        <property name="title">
+            <constraint name="NotBlank" />
+        </property>
     </class>
 
 

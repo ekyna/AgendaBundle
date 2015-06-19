@@ -21,16 +21,12 @@ class EventType extends ResourceFormType
             ->add('name', 'text', array(
                 'label' => 'ekyna_core.field.name',
             ))
-            ->add('title', 'text', array(
-                'label' => 'ekyna_core.field.title',
-            ))
-            ->add('content', 'textarea', array(
-                'label' => 'ekyna_core.field.content',
-                'required' => false,
+            ->add('translations', 'a2lix_translationsForms', array(
+                'form_type' => new EventTranslationType(),
+                'label'     => false,
                 'attr' => array(
-                    'class' => 'tinymce',
-                    'data-theme' => 'advanced',
-                )
+                    'widget_col' => 12,
+                ),
             ))
             ->add('startDate', 'datetime', array(
                 'label' => 'ekyna_core.field.start_date',

@@ -16,17 +16,11 @@
         </id>
 
         <field name="name" type="string" column="name" length="64" unique="true" />
-        <field name="title" type="string" column="title" length="255" />
-        <field name="content" type="text" column="content" nullable="true" />
 
         <field name="startDate" type="datetime" column="start_date" />
         <field name="endDate" type="datetime" column="end_date" />
 
         <field name="enabled" type="boolean" column="enabled" />
-
-        <field name="slug" column="slug" type="string" length="64" unique="true">
-            <gedmo:slug unique="true" updatable="false" fields="name" />
-        </field>
 
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create" />

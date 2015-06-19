@@ -2,6 +2,7 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Model;
 
+use Ekyna\Bundle\AdminBundle\Model\TranslatableInterface;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
 /**
@@ -9,7 +10,7 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
  * @package Ekyna\Bundle\AgendaBundle\Model
  * @author Étienne Dauvergne <contact@ekyna.com>
  */
-interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityInterface
+interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityInterface, TranslatableInterface
 {
     /**
      * Get id
@@ -49,19 +50,19 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function getTitle();
 
     /**
-     * Returns the content.
+     * Sets the description.
+     *
+     * @param string $description
+     * @return EventInterface|$this
+     */
+    public function setDescription($description);
+
+    /**
+     * Returns the description.
      *
      * @return string
      */
-    public function getContent();
-
-    /**
-     * Sets the content.
-     *
-     * @param string $content
-     * @return EventInterface|$this
-     */
-    public function setContent($content);
+    public function getDescription();
 
     /**
      * Sets the startDate.
@@ -94,13 +95,6 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function getEndDate();
 
     /**
-     * Returns the enabled.
-     *
-     * @return boolean
-     */
-    public function getEnabled();
-
-    /**
      * Sets the enabled.
      *
      * @param boolean $enabled
@@ -109,11 +103,11 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function setEnabled($enabled);
 
     /**
-     * Returns the slug.
+     * Returns the enabled.
      *
-     * @return string
+     * @return boolean
      */
-    public function getSlug();
+    public function getEnabled();
 
     /**
      * Sets the slug.
@@ -122,4 +116,11 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
      * @return EventInterface|$this
      */
     public function setSlug($slug);
+
+    /**
+     * Returns the slug.
+     *
+     * @return string
+     */
+    public function getSlug();
 }

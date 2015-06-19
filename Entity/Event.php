@@ -2,6 +2,7 @@
 
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
+use Ekyna\Bundle\AdminBundle\Model\AbstractTranslatable;
 use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 use Ekyna\Bundle\CoreBundle\Model as Core;
 
@@ -9,8 +10,10 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
  * Class Event
  * @package Ekyna\Bundle\AgendaBundle\Entity
  * @author Étienne Dauvergne <contact@ekyna.com>
+ *
+ * @method EventTranslation translate($locale = null, $create = false)
  */
-class Event implements EventInterface
+class Event extends AbstractTranslatable implements EventInterface
 {
     use Core\TimestampableTrait;
     use Core\TaggedEntityTrait;
@@ -26,16 +29,6 @@ class Event implements EventInterface
     protected $name;
 
     /**
-     * @var string
-     */
-    protected $title;
-
-    /**
-     * @var string
-     */
-    protected $content;
-
-    /**
      * @var \DateTime
      */
     protected $startDate;
@@ -49,11 +42,6 @@ class Event implements EventInterface
      * @var bool
      */
     protected $enabled = false;
-
-    /**
-     * @var string
-     */
-    protected $slug;
 
 
     /**
@@ -75,7 +63,7 @@ class Event implements EventInterface
     {
         $data =  array(
             'id'              => $this->id,
-            'title'           => $this->title,
+            'title'           => $this->getTitle(),
             'allDay'          => false,
             'start'           => $this->startDate->format('Y-m-d\TH:i:sP'),
             'backgroundColor' => '#dddddd',
@@ -105,7 +93,6 @@ class Event implements EventInterface
     public function setName($name)
     {
         $this->name = $name;
-
         return $this;
     }
 
@@ -122,8 +109,7 @@ class Event implements EventInterface
      */
     public function setTitle($title)
     {
-        $this->title = $title;
-
+        $this->translate()->setTitle($title);
         return $this;
     }
 
@@ -132,24 +118,41 @@ class Event implements EventInterface
      */
     public function getTitle()
     {
-        return $this->title;
+        return $this->translate()->getTitle();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getContent()
+    public function setDescription($description)
     {
-        return $this->content;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setContent($content)
-    {
-        $this->content = $content;
+        $this->translate()->setDescription($description);
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getDescription()
+    {
+        return $this->translate()->getDescription();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSlug($slug)
+    {
+        $this->translate()->setSlug($slug);
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSlug()
+    {
+        return $this->translate()->getSlug();
     }
 
     /**
@@ -200,23 +203,6 @@ class Event implements EventInterface
     public function setEnabled($enabled)
     {
         $this->enabled = $enabled;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
         return $this;
     }
 

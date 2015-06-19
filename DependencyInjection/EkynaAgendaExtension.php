@@ -31,11 +31,26 @@ class EkynaAgendaExtension extends AbstractExtension
         parent::prepend($container);
 
         $bundles = $container->getParameter('kernel.bundles');
+        $configs = $container->getExtensionConfig($this->getAlias());
+        $config = $this->processConfiguration(new Configuration(), $configs);
 
         if (array_key_exists('AsseticBundle', $bundles)) {
-            $container->prependExtensionConfig('assetic', array(
-                'bundles' => array('EkynaAgendaBundle')
-            ));
+            $this->configureAsseticBundle($container, $config);
         }
+    }
+
+    /**
+     * Configures the AsseticBundle.
+     *
+     * @param ContainerBuilder $container
+     * @param array $config
+     */
+    private function configureAsseticBundle(ContainerBuilder $container, array $config)
+    {
+        $asseticConfig = new AsseticConfiguration();
+        $container->prependExtensionConfig('assetic', array(
+            'bundles' => array('EkynaAgendaBundle'),
+            'assets' => $asseticConfig->build($config),
+        ));
     }
 }

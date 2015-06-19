@@ -19,7 +19,7 @@
 {% block stylesheets %}
     {{ parent() }}
     {% if events is not defined %}
-    {% stylesheets output='css/admin-agenda.css' filter='cssrewrite, ?yui_css'
+    {% stylesheets output='css/admin-agenda.css' filter='cssrewrite, ?yui_css' debug=false
         '@EkynaAgendaBundle/Resources/asset/css/fullcalendar.css'
         '@EkynaAgendaBundle/Resources/asset/css/agenda.css'
     -%}
@@ -31,12 +31,8 @@
 {% block javascripts %}
     {{ parent() }}
     {% if events is not defined %}
-        {% javascripts output='js/admin-agenda.js' filter='?yui_js'
-            '@EkynaAgendaBundle/Resources/asset/js/fullcalendar.js'
-            '@EkynaAgendaBundle/Resources/asset/js/lang-all.js'
-            '@EkynaAgendaBundle/Resources/asset/js/agenda.js'
-        -%}
-            <script type="text/javascript" src="{{ asset_url }}"></script>
-        {%- endjavascripts %}
+        <script type="text/javascript">
+            require(['bundles/ekynaagenda/js/agenda']);
+        </script>
     {% endif %}
 {% endblock javascripts %}
