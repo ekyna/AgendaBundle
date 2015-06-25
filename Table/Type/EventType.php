@@ -18,8 +18,8 @@ class EventType extends ResourceTableType
     public function buildTable(TableBuilderInterface $builder, array $options = array())
     {
         $builder
-            ->addColumn('name', 'anchor', array(
-                'label' => 'ekyna_core.field.name',
+            ->addColumn('title', 'anchor', array(
+                'label' => 'ekyna_core.field.title',
                 'sortable' => true,
                 'route_name' => 'ekyna_agenda_event_admin_show',
                 'route_parameters_map' => array(
@@ -66,9 +66,9 @@ class EventType extends ResourceTableType
                     ),
                 ),
             ))
-            ->addFilter('name', 'text', array(
-                'label' => 'ekyna_core.field.name',
-            ))
+            /*->addFilter('title', 'text', array(
+                'label' => 'ekyna_core.field.title',
+            ))*/
             ->addFilter('startDate', 'datetime', array(
                 'label' => 'ekyna_core.field.start_date',
             ))

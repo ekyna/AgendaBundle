@@ -46,12 +46,11 @@ class LoadEventData extends AbstractFixture implements FixtureInterface, Ordered
             /** @var \Ekyna\Bundle\AgendaBundle\Model\EventInterface $event */
             $event = $repo->createNew();
             $event
-                ->setName(sprintf('Agenda event %d name', $e))
+                ->setTitle(sprintf('Agenda event %d title', $e))
+                ->setContent('<p>' . $faker->paragraph(rand(4, 6)) . '</p>')
                 ->setStartDate($startDate)
                 ->setEndDate($endDate)
                 ->setEnabled(true)
-                ->setTitle(sprintf('Agenda event %d title', $e))
-                ->setContent('<p>' . $faker->paragraph(rand(4, 6)) . '</p>')
             ;
 
             $om->persist($event);

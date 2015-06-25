@@ -24,8 +24,7 @@ class EventTranslationType extends AbstractType
             ))
             ->add('content', 'tinymce', array(
                 'label' => 'ekyna_core.field.content',
-                'theme' => 'advanced',
-                'required' => false,
+                'theme' => $options['admin_mode'] ? 'advanced' : 'front',
             ))
         ;
     }

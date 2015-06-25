@@ -20,21 +20,6 @@ interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityI
     public function getId();
 
     /**
-     * Set name
-     *
-     * @param string $name
-     * @return EventInterface|$this
-     */
-    public function setName($name);
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName();
-
-    /**
      * Set title
      *
      * @param string $title

@@ -24,11 +24,6 @@ class Event extends AbstractTranslatable implements EventInterface
     protected $id;
 
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
      * @var \DateTime
      */
     protected $startDate;
@@ -51,7 +46,7 @@ class Event extends AbstractTranslatable implements EventInterface
      */
     public function __toString()
     {
-        return $this->getName();
+        return $this->getTitle();
     }
 
     /**
@@ -85,23 +80,6 @@ class Event extends AbstractTranslatable implements EventInterface
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getName()
-    {
-        return $this->name;
     }
 
     /**

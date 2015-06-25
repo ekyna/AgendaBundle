@@ -18,11 +18,11 @@ class EventType extends ResourceFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', 'text', array(
-                'label' => 'ekyna_core.field.name',
-            ))
             ->add('translations', 'a2lix_translationsForms', array(
-                'form_type' => new EventTranslationType(),
+                'form_type' => 'ekyna_agenda_event_translation',
+                'form_options' => array(
+                    'admin_mode' => $options['admin_mode'],
+                ),
                 'label'     => false,
                 'attr' => array(
                     'widget_col' => 12,

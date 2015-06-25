@@ -15,8 +15,6 @@
             <generator strategy="AUTO"/>
         </id>
 
-        <field name="name" type="string" column="name" length="64" unique="true" />
-
         <field name="startDate" type="datetime" column="start_date" />
         <field name="endDate" type="datetime" column="end_date" />
 
