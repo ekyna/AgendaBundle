@@ -10,9 +10,6 @@
             <option name="fields">name</option>
             <option name="message">ekyna_agenda.event.unique</option>
         </constraint>
-        <property name="name">
-            <constraint name="NotBlank" />
-        </property>
         <property name="translations">
             <constraint name="Valid" />
         </property>
