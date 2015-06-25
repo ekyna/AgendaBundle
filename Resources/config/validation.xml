@@ -6,10 +6,6 @@
                             http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="Ekyna\Bundle\AgendaBundle\Entity\Event">
-        <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
-            <option name="fields">name</option>
-            <option name="message">ekyna_agenda.event.unique</option>
-        </constraint>
         <property name="translations">
             <constraint name="Valid" />
         </property>
