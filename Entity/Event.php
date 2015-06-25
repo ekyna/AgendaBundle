@@ -136,7 +136,7 @@ class Event extends AbstractTranslatable implements EventInterface
     /**
      * {@inheritdoc}
      */
-    public function setStartDate(\DateTime $startDate)
+    public function setStartDate(\DateTime $startDate = null)
     {
         $this->startDate = $startDate;
         return $this;
