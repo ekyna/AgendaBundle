@@ -3,6 +3,7 @@
 namespace Ekyna\Bundle\AgendaBundle\Entity;
 
 use Doctrine\DBAL\Types\Type;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Ekyna\Bundle\AdminBundle\Doctrine\ORM\TranslatableResourceRepository;
 use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 
@@ -43,19 +44,17 @@ class EventRepository extends TranslatableResourceRepository
         $today->setTime(0,0,0);
 
         $qb = $this->getCollectionQueryBuilder();
-        $query = $qb
+        $qb
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
             ->andWhere($qb->expr()->gte('e.startDate', ':today'))
             ->addOrderBy('e.startDate', 'ASC')
             ->getQuery()
-        ;
-
-        return $query
             ->setMaxResults($limit)
             ->setParameter('enabled', true)
             ->setParameter('today', $today, Type::DATETIME)
-            ->getResult()
         ;
+
+        return new Paginator($qb->getQuery(), true);
     }
 
     /**
@@ -70,19 +69,17 @@ class EventRepository extends TranslatableResourceRepository
         $today->setTime(23,59,59);
 
         $qb = $this->getCollectionQueryBuilder();
-        $query = $qb
+        $qb
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
             ->andWhere($qb->expr()->lte('e.endDate', ':today'))
             ->addOrderBy('e.endDate', 'DESC')
-            ->getQuery()
-        ;
-
-        return $query
             ->setMaxResults($limit)
             ->setParameter('enabled', true)
             ->setParameter('today', $today, Type::DATETIME)
-            ->getResult()
+            ->getQuery()
         ;
+
+        return new Paginator($qb->getQuery(), true);
     }
 
     /**
@@ -106,10 +103,7 @@ class EventRepository extends TranslatableResourceRepository
             ->setParameter('endDate', $endDate, Type::DATETIME)
         ;
 
-        return $qb
-            ->getQuery()
-            ->getResult()
-        ;
+        return new Paginator($qb->getQuery(), true);
     }
 
     /**
