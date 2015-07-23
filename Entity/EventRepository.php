@@ -48,10 +48,10 @@ class EventRepository extends TranslatableResourceRepository
             ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
             ->andWhere($qb->expr()->gte('e.startDate', ':today'))
             ->addOrderBy('e.startDate', 'ASC')
-            ->getQuery()
             ->setMaxResults($limit)
             ->setParameter('enabled', true)
             ->setParameter('today', $today, Type::DATETIME)
+            ->getQuery()
         ;
 
         return new Paginator($qb->getQuery(), true);
