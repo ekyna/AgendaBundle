@@ -15,7 +15,7 @@ class EventType extends ResourceTableType
     /**
      * {@inheritdoc}
      */
-    public function buildTable(TableBuilderInterface $builder, array $options = array())
+    public function buildTable(TableBuilderInterface $builder, array $options)
     {
         $builder
             ->addColumn('title', 'anchor', array(
