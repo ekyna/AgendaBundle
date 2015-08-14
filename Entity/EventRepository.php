@@ -15,6 +15,38 @@ use Ekyna\Bundle\AgendaBundle\Model\EventInterface;
 class EventRepository extends TranslatableResourceRepository
 {
     /**
+     * Returns the front events pager.
+     *
+     * @param integer $currentPage
+     * @param integer $maxPerPage
+     * @return \Pagerfanta\Pagerfanta
+     */
+    public function createFrontPager($currentPage, $maxPerPage = 12)
+    {
+        $qb = $this->getCollectionQueryBuilder();
+
+        $query = $qb
+            ->addOrderBy('e.startDate', 'asc')
+            ->andWhere($qb->expr()->eq('e.enabled', ':enabled'))
+            ->andWhere($qb->expr()->gte('e.startDate', ':today'))
+            ->getQuery()
+        ;
+
+        $today = new \DateTime();
+        $today->setTime(0,0,0);
+        $query
+            ->setParameter('enabled', true)
+            ->setParameter('today', $today, Type::DATETIME)
+        ;
+
+        return $this
+            ->getPager($query)
+            ->setMaxPerPage($maxPerPage)
+            ->setCurrentPage($currentPage)
+        ;
+    }
+
+    /**
      * Finds one event by slug.
      *
      * @param string $slug
