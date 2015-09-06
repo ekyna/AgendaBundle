@@ -21,11 +21,10 @@
 		"ekyna/cms-bundle" : "0.3.*@dev"
 	},
 	"autoload" : {
-		"psr-0" : {
-			"Ekyna\\Bundle\\AgendaBundle" : ""
+		"psr-4" : {
+			"Ekyna\\Bundle\\AgendaBundle\\" : ""
 		}
 	},
-	"target-dir" : "Ekyna/Bundle/AgendaBundle",
 	"extra" : {
 		"branch-alias" : {
 			"dev-master" : "0.3.x-dev"

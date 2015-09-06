@@ -35,7 +35,9 @@
             <hr>
 
             <div style="text-align: center">
+            {% if 1 < pager.nbPages -%}
                 {{ pagerfanta(pager, 'twitter_bootstrap3') }}
+            {%- endif %}
             </div>
 
         </div>
