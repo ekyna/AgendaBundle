@@ -1,26 +1,23 @@
 ekyna_agenda_event_admin_home:
     path: ""
     defaults: { _controller: "ekyna_agenda.event.controller:homeAction" }
-    requirements:
-        _method: GET
+    methods: [GET]
 
 ekyna_agenda_event_admin_list:
     path: /list
     defaults: { _controller: "ekyna_agenda.event.controller:listAction" }
-    requirements:
-        _method: GET|POST
+    methods: [GET|POST]
 
 ekyna_agenda_event_admin_new:
     path: /new
     defaults: { _controller: "ekyna_agenda.event.controller:newAction" }
-    requirements:
-        _method: GET|POST
+    methods: [GET|POST]
 
 ekyna_agenda_event_admin_show:
     path: /{eventId}/show
     defaults: { _controller: "ekyna_agenda.event.controller:showAction" }
+    methods: [GET]
     requirements:
-        _method: GET
         eventId: \d+
     options:
         expose: true
@@ -28,8 +25,8 @@ ekyna_agenda_event_admin_show:
 ekyna_agenda_event_admin_edit:
     path: /{eventId}/edit
     defaults: { _controller: "ekyna_agenda.event.controller:editAction" }
+    methods: [GET|POST]
     requirements:
-        _method: GET|POST
         eventId: \d+
     options:
         expose: true
@@ -37,15 +34,15 @@ ekyna_agenda_event_admin_edit:
 ekyna_agenda_event_admin_tinymce:
     path: /{eventId}/tinymce
     defaults: { _controller: "ekyna_agenda.event.controller:tinymceAction", field: content }
+    methods: [GET]
     requirements:
-        _method: GET
         eventId: \d+
 
 ekyna_agenda_event_admin_toggle:
     path: /{eventId}/toggle/{field}
     defaults: { _controller: "ekyna_agenda.event.controller:toggleAction", field: enabled }
+    methods: [GET]
     requirements:
-        _method: GET
         eventId: \d+
         field: \w+
     options:
@@ -54,8 +51,8 @@ ekyna_agenda_event_admin_toggle:
 ekyna_agenda_event_admin_remove:
     path: /{eventId}/remove
     defaults: { _controller: "ekyna_agenda.event.controller:removeAction" }
+    methods: [GET|POST]
     requirements:
-        _method: GET|POST
         eventId: \d+
     options:
         expose: true

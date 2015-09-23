@@ -53,11 +53,11 @@ class Configuration implements ConfigurationInterface
                         ->arrayNode('event')
                             ->addDefaultsIfNotSet()
                             ->children()
-                                ->variableNode('templates')->defaultValue(array(
+                                ->variableNode('templates')->defaultValue([
                                     '_form.html' => 'EkynaAgendaBundle:Admin/Event:_form.html',
                                     'show.html'  => 'EkynaAgendaBundle:Admin/Event:show.html',
                                     'list.html'  => 'EkynaAgendaBundle:Admin/Event:list.html',
-                                ))->end()
+                                ])->end()
                                 ->scalarNode('parent')->end()
                                 ->scalarNode('entity')->defaultValue('Ekyna\Bundle\AgendaBundle\Entity\Event')->end()
                                 ->scalarNode('controller')->defaultValue('Ekyna\Bundle\AgendaBundle\Controller\Admin\EventController')->end()
@@ -73,7 +73,7 @@ class Configuration implements ConfigurationInterface
                                         ->scalarNode('repository')->end()
                                         ->arrayNode('fields')
                                             ->prototype('scalar')->end()
-                                            ->defaultValue(array('title', 'description', 'slug'))
+                                            ->defaultValue(['title', 'description', 'slug'])
                                         ->end()
                                     ->end()
                                 ->end()

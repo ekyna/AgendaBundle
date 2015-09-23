@@ -50,8 +50,8 @@ class CalendarEventListener implements EventSubscriberInterface
 
     public static function getSubscribedEvents()
     {
-        return array(
-            CalendarEvents::LOAD_EVENTS => array('onCalendarLoadEvents', 0),
-        );
+        return [
+            CalendarEvents::LOAD_EVENTS => ['onCalendarLoadEvents', 0],
+        ];
     }
 }

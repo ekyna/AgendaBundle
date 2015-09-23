@@ -13,11 +13,11 @@ use Ekyna\Bundle\CoreBundle\Model as Core;
 interface EventInterface extends Core\TimestampableInterface, Core\TaggedEntityInterface, TranslatableInterface
 {
     /**
-     * Get id
+     * Serializes the event.
      *
-     * @return integer
+     * @return array
      */
-    public function getId();
+    public function serialize();
 
     /**
      * Set title

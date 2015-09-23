@@ -48,9 +48,9 @@ class EkynaAgendaExtension extends AbstractExtension
     private function configureAsseticBundle(ContainerBuilder $container, array $config)
     {
         $asseticConfig = new AsseticConfiguration();
-        $container->prependExtensionConfig('assetic', array(
-            'bundles' => array('EkynaAgendaBundle'),
+        $container->prependExtensionConfig('assetic', [
+            'bundles' => ['EkynaAgendaBundle'],
             'assets' => $asseticConfig->build($config),
-        ));
+        ]);
     }
 }

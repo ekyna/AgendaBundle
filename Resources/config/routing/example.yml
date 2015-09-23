@@ -1,12 +1,11 @@
 ekyna_agenda_example_index:
     path: ""
     defaults: { _controller: EkynaAgendaBundle:Example:index }
-    requirements:
-        _method: GET
+    methods: [GET]
 
 ekyna_agenda_example_detail:
     path: /{slug}
     defaults: { _controller: EkynaAgendaBundle:Example:detail }
+    methods: [GET]
     requirements:
-        _method: GET
         slug: "[a-zA-Z0-9-]+"

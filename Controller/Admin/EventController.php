@@ -36,9 +36,9 @@ class EventController extends ResourceController
         $format = 'html';
         if ($request->isXmlHttpRequest()) {
             $format = 'xml';
-            $response->headers->add(array(
+            $response->headers->add([
                 'Content-Type' => 'application/xml; charset=' . strtolower($this->get('kernel')->getCharset())
-            ));
+            ]);
         }
 
         $params = $context->getTemplateVars();

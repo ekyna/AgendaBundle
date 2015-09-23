@@ -32,10 +32,10 @@ class ExampleController extends Controller
         /** @var \Ekyna\Bundle\AgendaBundle\Model\EventInterface[] $events */
         $events = $pager->getCurrentPageResults();
 
-        $response = $this->render('EkynaAgendaBundle:Example:index.html.twig', array(
+        $response = $this->render('EkynaAgendaBundle:Example:index.html.twig', [
             'pager'  => $pager,
             'events' => $events,
-        ));
+        ]);
 
         $tags = [Event::getEntityTagPrefix()];
         foreach ($events as $event) {
@@ -65,10 +65,10 @@ class ExampleController extends Controller
 
         $latest = $repo->findLatest();
 
-        $response = $this->render('EkynaAgendaBundle:Example:detail.html.twig', array(
+        $response = $this->render('EkynaAgendaBundle:Example:detail.html.twig', [
             'event' => $event,
             'latest' => $latest,
-        ));
+        ]);
 
         $tags = [Event::getEntityTagPrefix(), $event->getEntityTag()];
         foreach ($latest as $l) {

@@ -28,8 +28,8 @@ class EkynaAgendaBundle extends AbstractBundle
      */
     protected function getModelInterfaces()
     {
-        return array(
+        return [
             'Ekyna\Bundle\AgendaBundle\Model\EventInterface' => 'ekyna_agenda.event.class',
-        );
+        ];
     }
 }

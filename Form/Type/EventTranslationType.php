@@ -4,7 +4,7 @@ namespace Ekyna\Bundle\AgendaBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
  * Class EventTranslationType
@@ -19,25 +19,25 @@ class EventTranslationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', array(
+            ->add('title', 'text', [
                 'label' => 'ekyna_core.field.title',
-            ))
-            ->add('content', 'tinymce', array(
+            ])
+            ->add('content', 'tinymce', [
                 'label' => 'ekyna_core.field.content',
                 'theme' => $options['admin_mode'] ? 'advanced' : 'front',
-            ))
+            ])
         ;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver
-            ->setDefaults(array(
+            ->setDefaults([
                 'data_class' => 'Ekyna\Bundle\AgendaBundle\Entity\EventTranslation',
-            ))
+            ])
         ;
     }
 

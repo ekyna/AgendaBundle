@@ -23,18 +23,18 @@ class AdminMenuPass implements CompilerPassInterface
 
         $pool = $container->getDefinition('ekyna_admin.menu.pool');
 
-        $pool->addMethodCall('createGroup', array(array(
+        $pool->addMethodCall('createGroup', [[
             'name'     => 'content',
             'label'    => 'ekyna_core.field.content',
             'icon'     => 'file',
             'position' => 20,
-        )));
-        $pool->addMethodCall('createEntry', array('content', array(
+        ]]);
+        $pool->addMethodCall('createEntry', ['content', [
             'name'     => 'events',
             'route'    => 'ekyna_agenda_event_admin_home',
             'label'    => 'ekyna_agenda.label',
             'resource' => 'ekyna_agenda_event',
             'position' => 12,
-        )));
+        ]]);
     }
 }

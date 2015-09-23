@@ -18,66 +18,66 @@ class EventType extends ResourceTableType
     public function buildTable(TableBuilderInterface $builder, array $options)
     {
         $builder
-            ->addColumn('title', 'anchor', array(
+            ->addColumn('title', 'anchor', [
                 'label' => 'ekyna_core.field.title',
                 'sortable' => true,
                 'route_name' => 'ekyna_agenda_event_admin_show',
-                'route_parameters_map' => array(
+                'route_parameters_map' => [
                     'eventId' => 'id'
-                ),
-            ))
-            ->addColumn('startDate', 'datetime', array(
+                ],
+            ])
+            ->addColumn('startDate', 'datetime', [
                 'label' => 'ekyna_core.field.start_date',
                 'sortable' => true,
-            ))
-            ->addColumn('endDate', 'datetime', array(
+            ])
+            ->addColumn('endDate', 'datetime', [
                 'label' => 'ekyna_core.field.end_date',
                 'sortable' => true,
-            ))
-            ->addColumn('enabled', 'boolean', array(
+            ])
+            ->addColumn('enabled', 'boolean', [
                 'label' => 'ekyna_core.field.enabled',
                 'sortable' => true,
                 'route_name' => 'ekyna_agenda_event_admin_toggle',
-                'route_parameters_map' => array(
+                'route_parameters_map' => [
                     'eventId' => 'id',
-                ),
-            ))
-            ->addColumn('actions', 'admin_actions', array(
-                'buttons' => array(
-                    array(
+                ],
+            ])
+            ->addColumn('actions', 'admin_actions', [
+                'buttons' => [
+                    [
                         'label' => 'ekyna_core.button.edit',
                         'icon' => 'pencil',
                         'class' => 'warning',
                         'route_name' => 'ekyna_agenda_event_admin_edit',
-                        'route_parameters_map' => array(
+                        'route_parameters_map' => [
                             'eventId' => 'id'
-                        ),
+                        ],
                         'permission' => 'edit',
-                    ),
-                    array(
+                    ],
+                    [
                         'label' => 'ekyna_core.button.remove',
                         'icon' => 'trash',
                         'class' => 'danger',
                         'route_name' => 'ekyna_agenda_event_admin_remove',
-                        'route_parameters_map' => array(
+                        'route_parameters_map' => [
                             'eventId' => 'id'
-                        ),
+                        ],
                         'permission' => 'delete',
-                    ),
-                ),
-            ))
+                    ],
+                ],
+            ])
             /*->addFilter('title', 'text', array(
                 'label' => 'ekyna_core.field.title',
             ))*/
-            ->addFilter('startDate', 'datetime', array(
+            ->addFilter('startDate', 'datetime', [
                 'label' => 'ekyna_core.field.start_date',
-            ))
-            ->addFilter('endDate', 'datetime', array(
+            ])
+            ->addFilter('endDate', 'datetime', [
                 'label' => 'ekyna_core.field.end_date',
-            ))
-            ->addFilter('enabled', 'boolean', array(
+            ])
+            ->addFilter('enabled', 'boolean', [
                 'label' => 'ekyna_core.field.enabled',
-            ))
+            ])
         ;
     }
 

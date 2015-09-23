@@ -17,7 +17,7 @@ class AsseticConfiguration
      */
     public function build(array $config)
     {
-        $output = array();
+        $output = [];
 
         // Fix path in output dir
         if ('/' !== substr($config['output_dir'], -1) && strlen($config['output_dir']) > 0) {
@@ -35,16 +35,16 @@ class AsseticConfiguration
      */
     protected function buildFullCalendarJs(array $config)
     {
-        $inputs = array(
+        $inputs = [
             '@EkynaAgendaBundle/Resources/asset/js/fullcalendar.js',
             '@EkynaAgendaBundle/Resources/asset/js/lang-all.js',
-        );
+        ];
 
-        return array(
+        return [
             'inputs'  => $inputs,
-            'filters' => array('yui_js'),
+            'filters' => ['yui_js'],
             'output'  => $config['output_dir'].'js/fullcalendar.js',
             'debug'   => false,
-        );
+        ];
     }
 }

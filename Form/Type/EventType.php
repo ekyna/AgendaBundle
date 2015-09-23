@@ -18,29 +18,29 @@ class EventType extends ResourceFormType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('translations', 'a2lix_translationsForms', array(
+            ->add('translations', 'a2lix_translationsForms', [
                 'form_type' => 'ekyna_agenda_event_translation',
-                'form_options' => array(
+                'form_options' => [
                     'admin_mode' => $options['admin_mode'],
-                ),
+                ],
                 'label'     => false,
-                'attr' => array(
+                'attr' => [
                     'widget_col' => 12,
-                ),
-            ))
-            ->add('startDate', 'datetime', array(
+                ],
+            ])
+            ->add('startDate', 'datetime', [
                 'label' => 'ekyna_core.field.start_date',
-            ))
-            ->add('endDate', 'datetime', array(
+            ])
+            ->add('endDate', 'datetime', [
                 'label' => 'ekyna_core.field.end_date',
-            ))
-            ->add('enabled', 'checkbox', array(
+            ])
+            ->add('enabled', 'checkbox', [
                 'label' => 'ekyna_core.field.enabled',
                 'required' => false,
-                'attr' => array(
+                'attr' => [
                     'align_with_widget' => true,
-                )
-            ))
+                ]
+            ])
         ;
     }
 

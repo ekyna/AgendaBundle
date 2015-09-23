@@ -50,13 +50,11 @@ class Event extends AbstractTranslatable implements EventInterface
     }
 
     /**
-     * Serializes the event.
-     *
-     * @return array
+     * {@inheritdoc}
      */
     public function serialize()
     {
-        $data =  array(
+        $data =  [
             'id'              => $this->id,
             'title'           => $this->getTitle(),
             'allDay'          => false,
@@ -65,7 +63,7 @@ class Event extends AbstractTranslatable implements EventInterface
             'borderColor'     => '#dddddd',
             'textColor'       => '#333333',
             'enabled'         => $this->enabled,
-        );
+        ];
 
         if (null !== $this->endDate) {
             $data['end'] = $this->endDate->format('Y-m-d\TH:i:sP');
