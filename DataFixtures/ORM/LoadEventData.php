@@ -50,7 +50,7 @@ class LoadEventData extends AbstractFixture implements FixtureInterface, Ordered
                 ->setContent('<p>' . $faker->paragraph(rand(4, 6)) . '</p>')
                 ->setStartDate($startDate)
                 ->setEndDate($endDate)
-                ->setEnabled(true)
+                ->setEnabled(70 > rand(0,100))
             ;
 
             $om->persist($event);
