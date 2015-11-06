@@ -20,3 +20,6 @@ ekyna_agenda:
             private: Privé
         alert:
             empty_list: Aucun événement configuré
+        dashboard:
+            title: Événements à valider
+            none: Aucun événement à valider.
